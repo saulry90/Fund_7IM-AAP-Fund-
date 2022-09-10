@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Resultados</title>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="assets/css/app.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      
+</head>
+<body>
+      <div class="container">
+            <!-- Popup -->
+            <div class="popupFav">
+                  <div class="content">
+                        <span class="fa fa-close"></span>
+                        <div class="limit">
+                              <table class="data">
+                                    <thead>
+                                          <tr>
+                                                <td>Fund name</td>
+                                                <td>Annual management charge</td>   
+                                                <td>Fund type</td>
+                                                <td>Annualised performance</td>   
+                                                <td>Price</td>
+                                                <td>Ongoing charges figure (OCF)</td>   
+                                                <td>1 year yield</td>   
+                                                <td>&nbsp;</td>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          <tr>
+                                                <td><a href="#">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                                <td>1.00 %</td>
+                                                <td>OEIC</td>   
+                                                <td>3.99 %</td>
+                                                <td>1.99 GBP</td>   
+                                                <td>1.20 %</td>
+                                                <td>0.00 %</td>
+                                                <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td><a href="#">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                                <td>1.00 %</td>
+                                                <td>OEIC</td>   
+                                                <td>3.99 %</td>
+                                                <td>1.99 GBP</td>   
+                                                <td>1.20 %</td>
+                                                <td>0.00 %</td>
+                                                <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td><a href="#">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                                <td>1.00 %</td>
+                                                <td>OEIC</td>   
+                                                <td>3.99 %</td>
+                                                <td>1.99 GBP</td>   
+                                                <td>1.20 %</td>
+                                                <td>0.00 %</td>
+                                                <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                          </tr>
+
+                                          
+                                    </tbody>
+                              </table> 
+                        </div>
+                        
+                  </div>
+                 
+            </div>
+            
+            <!-- header -->
+            <header>
+                  <section>
+                        <!-- Buscador header -->
+                        <form name="formSearcher" id="formSearcher" action="" method="post">
+                              <div class="searcher">
+                                    <input type="search" name="txtSearch" id="txtSearch" placeholder="Search by fund name or ISIN" required>
+                                    <input type="button" name="btnSearchText" id="btnSearchText" class="fa fa-search" value="&#xf002;">
+                              </div>
+                        </form>
+
+                        <!-- Buscador filtrado header -->
+                        <form name="formFilter" id="formFilter" action="" method="post">
+                              <div class="searcher-filter">
+
+                                    <!-- Selects inputs -->
+                                    <div class="boxSelects">
+                                          <div class="boxSelects_box">
+                                                <div class="inform">
+                                                      <span class="tooltipInfo">The company which manages the fund.</span>
+                                                      <span class="fa fa-info"></span>
+                                                      <label>Fund manager</label>                                                      
+                                                </div>
+
+                                                <div class="multiselect">
+                                                      
+                                                      <div class="selectBox" onclick="showCheckboxes()">
+                                                        <select>
+                                                          <option>Select an option</option>
+                                                        </select>
+                                                        <div class="overSelect"></div>
+                                                      </div>
+                                                      <div id="checkboxes">
+                                                            <div>
+                                                                   <input type="checkbox" onClick="toggle(this)" /> <span>Check all</span>
+                                                            </div>
+                                                     
+                                                        <label for="1">
+                                                          <input type="checkbox" id="1" name="checkOpc" />7IM</label>
+                                                        <label for="2">
+                                                          <input type="checkbox" id="2" name="checkOpc" />Aberdeen Asset Management (Part of Aberdeen Standard Investments)</label>
+                                                        <label for="3">
+                                                          <input type="checkbox" id="3" name="checkOpc" />Aberforth Unit Trust Managers Ltd</label>
+                                                        <label for="4">
+                                                          <input type="checkbox" id="4" name="checkOpc" />7IM</label>
+                                                        <label for="5">
+                                                          <input type="checkbox" id="5" name="checkOpc" />Aberdeen Asset Management (Part of Aberdeen Standard Investments)</label>
+                                                        <label for="6">
+                                                          <input type="checkbox" id="6" name="checkOpc" />Aberforth Unit Trust Managers Ltd</label>
+                                                          <label for="7">
+                                                            <input type="checkbox" id="7" name="checkOpc" />Aberdeen Asset Management (Part of Aberdeen Standard Investments)</label>
+                                                          <label for="8">
+                                                            <input type="checkbox" id="8" name="checkOpc" />Aberforth Unit Trust Managers Ltd</label>
+                                                          <label for="9">
+                                                            <input type="checkbox" id="9" name="checkOpc" />7IM</label>
+                                                          <label for="10">
+                                                            <input type="checkbox" id="10" name="checkOpc" />Aberdeen Asset Management (Part of Aberdeen Standard Investments)</label>
+                                                          <label for="11">
+                                                            <input type="checkbox" id="11" name="checkOpc" />Aberforth Unit Trust Managers Ltd</label>
+                                                      </div>
+                                                    </div>
+
+                                           
+                                          </div>
+                                          <div class="boxSelects_box">
+                                                <div class="inform">
+                                                      <span class="tooltipInfo">The primary geographical location(s) where the fund invests.</span>
+                                                      <span class="fa fa-info"></span>
+                                                      <label>Location</label>                                                      
+                                                </div>
+
+                                                <div class="multiselect">
+                                                      
+                                                      <div class="selectBox" onclick="showCheckboxes2()">
+                                                        <select>
+                                                          <option>Select an option</option>
+                                                        </select>
+                                                        <div class="overSelect"></div>
+                                                      </div>
+                                                      <div id="checkboxes2">
+                                                            <div>
+                                                                   <input type="checkbox" onClick="toggle(this)" /> <span>Check all</span>
+                                                            </div>
+                                                     
+                                                        <label for="12">
+                                                          <input type="checkbox" id="12" name="checkOpc" />Africa</label>
+                                                        <label for="13">
+                                                          <input type="checkbox" id="13" name="checkOpc" />ASEAN</label>
+                                                        <label for="14">
+                                                          <input type="checkbox" id="14" name="checkOpc" />Asia Emerging Mkts</label>
+                                                        <label for="15">
+                                                          <input type="checkbox" id="15" name="checkOpc" />Asia Pacific</label>
+                                                        <label for="16">
+                                                          <input type="checkbox" id="16" name="checkOpc" />Asia Pacific ex Japan</label>
+                                                        
+                                                      </div>
+                                                    </div>
+                                          </div>
+                                          <div class="boxSelects_box">
+                                                <div class="inform">
+                                                      <span class="tooltipInfo">The Investment Association (IA) maintains a system for fund classification. Each sector contains funds with comparable characteristics, for example investing in similar assets.</span>
+                                                      <span class="fa fa-info"></span>
+                                                      <label>Sector</label>                                                      
+                                                </div>
+
+                                                <div class="multiselect">
+                                                      
+                                                      <div class="selectBox" onclick="showCheckboxes3()">
+                                                        <select>
+                                                          <option><span>Select an option</span></option>
+                                                        </select>
+                                                        <div class="overSelect"></div>
+                                                      </div>
+                                                      <div id="checkboxes3">
+                                                            <div>
+                                                                   <input type="checkbox" onClick="toggle(this)" /> <span>Check all</span>
+                                                            </div>
+                                                     
+                                                        <label for="17">
+                                                          <input type="checkbox" id="17" name="checkOpc" />Africa</label>
+                                                        <label for="18">
+                                                          <input type="checkbox" id="18" name="checkOpc" />ASEAN</label>
+                                                        <label for="19">
+                                                          <input type="checkbox" id="19" name="checkOpc" />Asia Emerging Mkts</label>
+                                                        <label for="20">
+                                                          <input type="checkbox" id="20" name="checkOpc" />Asia Pacific</label>
+                                                        <label for="21">
+                                                          <input type="checkbox" id="21" name="checkOpc" />Asia Pacific ex Japan</label>
+                                                        
+                                                      </div>
+                                                    </div>
+                                          </div>
+                                    </div>
+
+                                    <!-- Buttons 3 bottom form -->
+                                    <div class="formButtons">
+                                          
+                                          <div class="btnMore">
+                                                <input type="button" name="btnAdvanced" id="btnAdvanced" class="buttonRed" value="Advanced filter">
+                                                
+                                                <div class="botnFav">
+                                                      <span class="fa fa-eye"></span>
+                                                      <input type="button" name="btnFavourite" id="btnFavourite" class="buttonRed" value="View my favourite funds">    
+                                                </div>
+                                          </div>
+                                                
+                                                
+                                          <div class="btnSearchFull">
+                                                <input type="button" name="btnSearch" id="btnSearch" class="buttonRed" value="Search">
+                                          </div>
+                                          
+                                    </div>
+
+                                    <!-- Filtros avanzados desplegar -->
+                                    <section id="optionsFilter">
+                                          <div class="boxSelects">
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <label>Previously Saved Search<label>                                                      
+                                                      </div>
+      
+                                                      <select name="cmbFundManager" id="cmbFundManager" aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.</option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK) Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited</option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited</option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <label>Period</label>                                                      
+                                                      </div>
+      
+                                                      <select name="cmbFundManager" id="cmbFundManager" aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.</option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK) Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited</option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited</option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <label>Minimum performance</label>                                                      
+                                                      </div>
+      
+                                                      <select name="cmbFundManager" id="cmbFundManager" aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.</option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK) Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited</option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited</option>
+                                                      </select>
+                                                </div>
+                                                
+                                          </div>
+                                          <div class="boxSelects">
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <span class="tooltipInfo">An annual cost which is built into the price of the fund to cover ongoing management costs and to pay the fund or portfolio manager and any analysts working on the fund.</span>
+                                                            <span class="fa fa-info"></span>
+                                                            <label>Annual mgt charge<label>                                                      
+                                                      </div>
+      
+                                                      <select name="cmbFundManager" id="cmbFundManager" aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.</option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK) Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited</option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited</option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <span class="tooltipInfo">Income or accumulation. This refers to the method in which dividends are managed - either paid to the investor or invested back into the fund.</span>
+                                                            <span class="fa fa-info"></span>
+                                                            <label>Fund type</label>                                                      
+                                                      </div>
+      
+                                                      <select name="cmbFundManager" id="cmbFundManager" aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.</option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK) Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited</option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited</option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <span class="tooltipInfo">The ongoing charges figure (ocf) represents the cost of running the fund, which includes the amc and other administrative costs.it is expressed as a percentage.</span>
+                                                            <span class="fa fa-info"></span>
+                                                            <label>Ongoing charges figure</label>                                                      
+                                                      </div>
+      
+                                                      <select name="cmbFundManager" id="cmbFundManager" aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.</option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK) Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited</option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited</option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <span class="tooltipInfo">The return earned on an investment taking into account the annual income and its present capital value.</span>
+                                                            <span class="fa fa-info"></span>
+                                                            <label>Yield</label>                                                      
+                                                      </div>
+      
+                                                      <select name="cmbFundManager" id="cmbFundManager" aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.</option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK) Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited</option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited</option>
+                                                      </select>
+                                                </div>
+                                                
+                                          </div>
+                                          <div class="searchBottom">
+                                                <div class="btnSearchFull">
+                                                      <input type="button" name="btnSearch" id="btnSearch" class="buttonRed" value="Search">
+                                                </div>
+                                          </div>
+                                    </section>
+                              </div>
+                              
+                        </form>
+                  </section>
+
+               
+            </header>
+
+            <!-- Tabla resultados -->
+            <main class="resultados">
+                  <div>
+                       
+                              <div class="paginacion">
+                                    
+                                          <div>Total funds: <strong>5995</strong>&nbsp;&nbsp;&nbsp;</div>
+                                          <div>
+                                                <span>View:</span>
+                                                
+                                                      <div class="select_mini"><select name="cmbView" id="cmbView" class="select_mini">
+                                                                  <option value="10" selected="">10&nbsp;per page</option>
+                                                                  <option value="20">20&nbsp;per page</option>
+                                                                  <option value="30">30&nbsp;per page</option>
+                                                            </select></div>
+                                                
+                                          </div>
+                                          <div class="paginas">
+                                                <span class="sel">1</span>
+                                                <span>2 </span>
+                                                <span>3 </span>
+                                                <span>4 </span>
+                                                <span>5 </span>
+                                                <span>6 </span>
+                                                <span>Next </span>
+                                          </div>
+                                          
+                                    
+                              </div>
+                        
+                        <table class="data resul">
+                              <thead>
+                                    
+                                    <tr>
+                                          <td>Fund name</td>
+                                          <td>Annual management charge</td>   
+                                          <td>Fund type</td>
+                                          <td>Annualised performance</td>   
+                                          <td>Price</td>
+                                          <td>Ongoing charges figure (OCF)</td>   
+                                          <td>1 year yield</td>   
+                                          <td>&nbsp;</td>
+                                    </tr>
+                              </thead>
+                              <tbody>
+                                    <tr>
+                                          <td><a href="detalle.html">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                          <td>1.00 %</td>
+                                          <td>OEIC</td>   
+                                          <td>3.99 %</td>
+                                          <td>1.99 GBP</td>   
+                                          <td>1.20 %</td>
+                                          <td>0.00 %</td>
+                                          <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                    </tr>
+                                    <tr>
+                                          <td><a href="detalle.html">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                          <td>1.00 %</td>
+                                          <td>OEIC</td>   
+                                          <td>3.99 %</td>
+                                          <td>1.99 GBP</td>   
+                                          <td>1.20 %</td>
+                                          <td>0.00 %</td>
+                                          <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                    </tr>
+                                    <tr>
+                                          <td><a href="detalle.html">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                          <td>1.00 %</td>
+                                          <td>OEIC</td>   
+                                          <td>3.99 %</td>
+                                          <td>1.99 GBP</td>   
+                                          <td>1.20 %</td>
+                                          <td>0.00 %</td>
+                                          <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                    </tr>
+                                    <tr>
+                                          <td><a href="detalle.html">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                          <td>1.00 %</td>
+                                          <td>OEIC</td>   
+                                          <td>3.99 %</td>
+                                          <td>1.99 GBP</td>   
+                                          <td>1.20 %</td>
+                                          <td>0.00 %</td>
+                                          <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                    </tr>
+                                    <tr>
+                                          <td><a href="detalle.html">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                          <td>1.00 %</td>
+                                          <td>OEIC</td>   
+                                          <td>3.99 %</td>
+                                          <td>1.99 GBP</td>   
+                                          <td>1.20 %</td>
+                                          <td>0.00 %</td>
+                                          <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                    </tr>
+                                    <tr>
+                                          <td><a href="detalle.html">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                          <td>1.00 %</td>
+                                          <td>OEIC</td>   
+                                          <td>3.99 %</td>
+                                          <td>1.99 GBP</td>   
+                                          <td>1.20 %</td>
+                                          <td>0.00 %</td>
+                                          <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                    </tr>
+                                    <tr>
+                                          <td><a href="detalle.html">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                          <td>1.00 %</td>
+                                          <td>OEIC</td>   
+                                          <td>3.99 %</td>
+                                          <td>1.99 GBP</td>   
+                                          <td>1.20 %</td>
+                                          <td>0.00 %</td>
+                                          <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                    </tr>
+                                    <tr>
+                                          <td><a href="detalle.html">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                          <td>1.00 %</td>
+                                          <td>OEIC</td>   
+                                          <td>3.99 %</td>
+                                          <td>1.99 GBP</td>   
+                                          <td>1.20 %</td>
+                                          <td>0.00 %</td>
+                                          <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                    </tr>
+                                    <tr>
+                                          <td><a href="#">7IM AAP Adventurous A Fund Acc</a>	</td>   
+                                          <td>1.00 %</td>
+                                          <td>OEIC</td>   
+                                          <td>3.99 %</td>
+                                          <td>1.99 GBP</td>   
+                                          <td>1.20 %</td>
+                                          <td>0.00 %</td>
+                                          <td><img src="assets/img/pdficon.png" class="iconPdf" alt="" width="21"><span class="fa fa-heart"></span><span> <span class="fa fa-plus"></span></span></td>
+                                    </tr>
+
+                                    
+                              </tbody>
+                        </table> 
+
+                        
+                        <div class="paginacion">
+                                    
+                              <div>Total funds: <strong>5995</strong>&nbsp;&nbsp;&nbsp;</div>
+                              <div>
+                                    <span>View:</span>
+                                    
+                                          <div class="select_mini"><select name="cmbView" id="cmbView" class="select_mini">
+                                                      <option value="10" selected="">10&nbsp;per page</option>
+                                                      <option value="20">20&nbsp;per page</option>
+                                                      <option value="30">30&nbsp;per page</option>
+                                                </select></div>
+                                    
+                              </div>
+                              <div class="paginas">
+                                    <span class="sel">1</span>
+                                    <span>2 </span>
+                                    <span>3 </span>
+                                    <span>4 </span>
+                                    <span>5 </span>
+                                    <span>6 </span>
+                                    <span>Next </span>
+                              </div>
+                              
+                        
+                  </div>
+                  </div>
+            </main>
+      </div>
+      <script src="assets/js/app.js"></script>
+</body>
+</html>

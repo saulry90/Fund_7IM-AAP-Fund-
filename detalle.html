@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Detalle</title>
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="assets/css/app.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+            integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="sweetalert2.all.min.js"></script>
+      <script src="sweetalert2.min.js"></script>
+      <link rel="stylesheet" href="sweetalert2.min.css">
+
+</head>
+
+<body onload="document.getElementsByClassName('active').click();">
+      <div class="container">
+            <!-- Popup mis fav -->
+            <div class="popupFav">
+                  <div class="content">
+                        <span class="fa fa-close"></span>
+                        <div class="limit">
+                              <table class="data">
+                                    <thead>
+                                          <tr>
+                                                <td>Fund name</td>
+                                                <td>Annual management charge</td>
+                                                <td>Fund type</td>
+                                                <td>Annualised performance</td>
+                                                <td>Price</td>
+                                                <td>Ongoing charges figure (OCF)</td>
+                                                <td>1 year yield</td>
+                                                <td>&nbsp;</td>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          <tr>
+                                                <td><a href="#">7IM AAP Adventurous A Fund Acc</a> </td>
+                                                <td>1.00 %</td>
+                                                <td>OEIC</td>
+                                                <td>3.99 %</td>
+                                                <td>1.99 GBP</td>
+                                                <td>1.20 %</td>
+                                                <td>0.00 %</td>
+                                                <td><img src="assets/img/pdficon.png" class="iconPdf" alt=""
+                                                            width="21"><span class="fa fa-heart"></span><span> <span
+                                                                  class="fa fa-plus"></span></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td><a href="#">7IM AAP Adventurous A Fund Acc</a> </td>
+                                                <td>1.00 %</td>
+                                                <td>OEIC</td>
+                                                <td>3.99 %</td>
+                                                <td>1.99 GBP</td>
+                                                <td>1.20 %</td>
+                                                <td>0.00 %</td>
+                                                <td><img src="assets/img/pdficon.png" class="iconPdf" alt=""
+                                                            width="21"><span class="fa fa-heart"></span><span> <span
+                                                                  class="fa fa-plus"></span></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td><a href="#">7IM AAP Adventurous A Fund Acc</a> </td>
+                                                <td>1.00 %</td>
+                                                <td>OEIC</td>
+                                                <td>3.99 %</td>
+                                                <td>1.99 GBP</td>
+                                                <td>1.20 %</td>
+                                                <td>0.00 %</td>
+                                                <td><img src="assets/img/pdficon.png" class="iconPdf" alt=""
+                                                            width="21"><span class="fa fa-heart"></span><span> <span
+                                                                  class="fa fa-plus"></span></span></td>
+                                          </tr>
+
+
+                                    </tbody>
+                              </table>
+                        </div>
+
+                  </div>
+
+            </div>
+
+            <!-- popup add fav heart -->
+            <div class="popupAddFav">
+                  <div class="content">
+                        <span class="fa_quit fa fa-close"></span>
+                        <p>added to favorites</p>
+
+                  </div>
+
+            </div>
+
+            <!-- header -->
+            <header>
+                  <section>
+                        <!-- Buscador header -->
+                        <form name="formSearcher" id="formSearcher" action="" method="post">
+                              <div class="searcher">
+                                    <input type="search" name="txtSearch" id="txtSearch"
+                                          placeholder="Search by fund name or ISIN" required>
+                                    <input type="button" name="btnSearchText" id="btnSearchText" class="fa fa-search"
+                                          value="&#xf002;">
+                              </div>
+                        </form>
+
+                        <!-- Buscador filtrado header -->
+                        <form name="formFilter" id="formFilter" action="" method="post">
+                              <div class="searcher-filter">
+
+                                    <!-- Selects inputs -->
+                                    <div class="boxSelects">
+                                          <div class="boxSelects_box">
+                                                <div class="inform">
+                                                      <span class="tooltipInfo">The company which manages the
+                                                            fund.</span>
+                                                      <span class="fa fa-info"></span>
+                                                      <label>Fund manager</label>
+                                                </div>
+
+                                                <div class="multiselect">
+
+                                                      <div class="selectBox" onclick="showCheckboxes()">
+                                                            <select>
+                                                                  <option>Select an option</option>
+                                                            </select>
+                                                            <div class="overSelect"></div>
+                                                      </div>
+                                                      <div id="checkboxes">
+                                                            <div>
+                                                                  <input type="checkbox" onClick="toggle(this)" />
+                                                                  <span>Check all</span>
+                                                            </div>
+
+                                                            <label for="1">
+                                                                  <input type="checkbox" id="1"
+                                                                        name="checkOpc" />7IM</label>
+                                                            <label for="2">
+                                                                  <input type="checkbox" id="2"
+                                                                        name="checkOpc" />Aberdeen Asset Management
+                                                                  (Part of Aberdeen Standard Investments)</label>
+                                                            <label for="3">
+                                                                  <input type="checkbox" id="3"
+                                                                        name="checkOpc" />Aberforth Unit Trust Managers
+                                                                  Ltd</label>
+                                                            <label for="4">
+                                                                  <input type="checkbox" id="4"
+                                                                        name="checkOpc" />7IM</label>
+                                                            <label for="5">
+                                                                  <input type="checkbox" id="5"
+                                                                        name="checkOpc" />Aberdeen Asset Management
+                                                                  (Part of Aberdeen Standard Investments)</label>
+                                                            <label for="6">
+                                                                  <input type="checkbox" id="6"
+                                                                        name="checkOpc" />Aberforth Unit Trust Managers
+                                                                  Ltd</label>
+                                                            <label for="7">
+                                                                  <input type="checkbox" id="7"
+                                                                        name="checkOpc" />Aberdeen Asset Management
+                                                                  (Part of Aberdeen Standard Investments)</label>
+                                                            <label for="8">
+                                                                  <input type="checkbox" id="8"
+                                                                        name="checkOpc" />Aberforth Unit Trust Managers
+                                                                  Ltd</label>
+                                                            <label for="9">
+                                                                  <input type="checkbox" id="9"
+                                                                        name="checkOpc" />7IM</label>
+                                                            <label for="10">
+                                                                  <input type="checkbox" id="10"
+                                                                        name="checkOpc" />Aberdeen Asset Management
+                                                                  (Part of Aberdeen Standard Investments)</label>
+                                                            <label for="11">
+                                                                  <input type="checkbox" id="11"
+                                                                        name="checkOpc" />Aberforth Unit Trust Managers
+                                                                  Ltd</label>
+                                                      </div>
+                                                </div>
+
+
+                                          </div>
+                                          <div class="boxSelects_box">
+                                                <div class="inform">
+                                                      <span class="tooltipInfo">The primary geographical location(s)
+                                                            where the fund invests.</span>
+                                                      <span class="fa fa-info"></span>
+                                                      <label>Location</label>
+                                                </div>
+
+                                                <div class="multiselect">
+
+                                                      <div class="selectBox" onclick="showCheckboxes2()">
+                                                            <select>
+                                                                  <option>Select an option</option>
+                                                            </select>
+                                                            <div class="overSelect"></div>
+                                                      </div>
+                                                      <div id="checkboxes2">
+                                                            <div>
+                                                                  <input type="checkbox" onClick="toggle(this)" />
+                                                                  <span>Check all</span>
+                                                            </div>
+
+                                                            <label for="12">
+                                                                  <input type="checkbox" id="12"
+                                                                        name="checkOpc" />Africa</label>
+                                                            <label for="13">
+                                                                  <input type="checkbox" id="13"
+                                                                        name="checkOpc" />ASEAN</label>
+                                                            <label for="14">
+                                                                  <input type="checkbox" id="14" name="checkOpc" />Asia
+                                                                  Emerging Mkts</label>
+                                                            <label for="15">
+                                                                  <input type="checkbox" id="15" name="checkOpc" />Asia
+                                                                  Pacific</label>
+                                                            <label for="16">
+                                                                  <input type="checkbox" id="16" name="checkOpc" />Asia
+                                                                  Pacific ex Japan</label>
+
+                                                      </div>
+                                                </div>
+                                          </div>
+                                          <div class="boxSelects_box">
+                                                <div class="inform">
+                                                      <span class="tooltipInfo">The Investment Association (IA)
+                                                            maintains a system for fund classification. Each sector
+                                                            contains funds with comparable characteristics, for example
+                                                            investing in similar assets.</span>
+                                                      <span class="fa fa-info"></span>
+                                                      <label>Sector</label>
+                                                </div>
+
+                                                <div class="multiselect">
+
+                                                      <div class="selectBox" onclick="showCheckboxes3()">
+                                                            <select>
+                                                                  <option><span>Select an option</span></option>
+                                                            </select>
+                                                            <div class="overSelect"></div>
+                                                      </div>
+                                                      <div id="checkboxes3">
+                                                            <div>
+                                                                  <input type="checkbox" onClick="toggle(this)" />
+                                                                  <span>Check all</span>
+                                                            </div>
+
+                                                            <label for="17">
+                                                                  <input type="checkbox" id="17"
+                                                                        name="checkOpc" />Africa</label>
+                                                            <label for="18">
+                                                                  <input type="checkbox" id="18"
+                                                                        name="checkOpc" />ASEAN</label>
+                                                            <label for="19">
+                                                                  <input type="checkbox" id="19" name="checkOpc" />Asia
+                                                                  Emerging Mkts</label>
+                                                            <label for="20">
+                                                                  <input type="checkbox" id="20" name="checkOpc" />Asia
+                                                                  Pacific</label>
+                                                            <label for="21">
+                                                                  <input type="checkbox" id="21" name="checkOpc" />Asia
+                                                                  Pacific ex Japan</label>
+
+                                                      </div>
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <!-- Buttons 3 bottom form -->
+                                    <div class="formButtons">
+
+                                          <div class="btnMore">
+                                                <input type="button" name="btnAdvanced" id="btnAdvanced"
+                                                      class="buttonRed" value="Advanced filter">
+
+                                                <div class="botnFav">
+                                                      <span class="fa fa-eye"></span>
+                                                      <input type="button" name="btnFavourite" id="btnFavourite"
+                                                            class="buttonRed" value="View my favourite funds">
+                                                </div>
+                                          </div>
+
+
+                                          <div class="btnSearchFull">
+                                                <input type="button" name="btnSearch" id="btnSearch" class="buttonRed"
+                                                      value="Search">
+                                          </div>
+
+                                    </div>
+
+                                    <!-- Filtros avanzados desplegar -->
+                                    <section id="optionsFilter">
+                                          <div class="boxSelects">
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <label>Previously Saved Search<label>
+                                                      </div>
+
+                                                      <select name="cmbFundManager" id="cmbFundManager"
+                                                            aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.
+                                                            </option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions
+                                                                  Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK)
+                                                                  Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited
+                                                            </option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited
+                                                            </option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <label>Period</label>
+                                                      </div>
+
+                                                      <select name="cmbFundManager" id="cmbFundManager"
+                                                            aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.
+                                                            </option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions
+                                                                  Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK)
+                                                                  Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited
+                                                            </option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited
+                                                            </option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <label>Minimum performance</label>
+                                                      </div>
+
+                                                      <select name="cmbFundManager" id="cmbFundManager"
+                                                            aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.
+                                                            </option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions
+                                                                  Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK)
+                                                                  Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited
+                                                            </option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited
+                                                            </option>
+                                                      </select>
+                                                </div>
+
+                                          </div>
+                                          <div class="boxSelects">
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <span class="tooltipInfo">An annual cost which is built into
+                                                                  the price of the fund to cover ongoing management
+                                                                  costs and to pay the fund or portfolio manager and any
+                                                                  analysts working on the fund.</span>
+                                                            <span class="fa fa-info"></span>
+                                                            <label>Annual mgt charge<label>
+                                                      </div>
+
+                                                      <select name="cmbFundManager" id="cmbFundManager"
+                                                            aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.
+                                                            </option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions
+                                                                  Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK)
+                                                                  Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited
+                                                            </option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited
+                                                            </option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <span class="tooltipInfo">Income or accumulation. This
+                                                                  refers to the method in which dividends are managed -
+                                                                  either paid to the investor or invested back into the
+                                                                  fund.</span>
+                                                            <span class="fa fa-info"></span>
+                                                            <label>Fund type</label>
+                                                      </div>
+
+                                                      <select name="cmbFundManager" id="cmbFundManager"
+                                                            aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.
+                                                            </option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions
+                                                                  Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK)
+                                                                  Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited
+                                                            </option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited
+                                                            </option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <span class="tooltipInfo">The ongoing charges figure (ocf)
+                                                                  represents the cost of running the fund, which
+                                                                  includes the amc and other administrative costs.it is
+                                                                  expressed as a percentage.</span>
+                                                            <span class="fa fa-info"></span>
+                                                            <label>Ongoing charges figure</label>
+                                                      </div>
+
+                                                      <select name="cmbFundManager" id="cmbFundManager"
+                                                            aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.
+                                                            </option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions
+                                                                  Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK)
+                                                                  Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited
+                                                            </option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited
+                                                            </option>
+                                                      </select>
+                                                </div>
+                                                <div class="boxSelects_box">
+                                                      <div class="inform">
+                                                            <span class="tooltipInfo">The return earned on an investment
+                                                                  taking into account the annual income and its present
+                                                                  capital value.</span>
+                                                            <span class="fa fa-info"></span>
+                                                            <label>Yield</label>
+                                                      </div>
+
+                                                      <select name="cmbFundManager" id="cmbFundManager"
+                                                            aria-disabled="false">
+                                                            <option value="0C0000AOEH">Select options</option>
+                                                            <option value="0C0000341K">Baillie Gifford &amp; Co Limited.
+                                                            </option>
+                                                            <option value="0C00001UWC">Evelyn Partners Fund Solutions
+                                                                  Limited</option>
+                                                            <option value="0C00002I1B">First Sentier Investors (UK)
+                                                                  Funds Ltd</option>
+                                                            <option value="0C00001NRW">GAM Fund Management Limited
+                                                            </option>
+                                                            <option value="0C00001OOC">Invesco Fund Managers Limited
+                                                            </option>
+                                                      </select>
+                                                </div>
+
+                                          </div>
+                                          <div class="searchBottom">
+                                                <div class="btnSearchFull">
+                                                      <input type="button" name="btnSearch" id="btnSearch"
+                                                            class="buttonRed" value="Search">
+                                                </div>
+                                          </div>
+                                    </section>
+                              </div>
+
+                        </form>
+                  </section>
+
+                  <!-- Sección datos descripción -->
+                  <section class="dataDescription">
+                        <!-- título del fondo, btns, pdf information -->
+                        <div class="headr">
+                              <div class="titleBtns">
+                                    <h2>7IM AAP Adventurous A Fund Acc</h2>
+                                    <span id="boton-heart" class="fa fa-heart"></span>
+                                    <input type="button" name="btnBuy" id="btnBuy" class="buttonRed" value="Buy">
+                                    <input type="button" name="btnSell" id="btnSell" class="buttonRed" value="Sell">
+                              </div>
+                              <div class="inform">
+
+                                    <span class="tooltipInfo">A Key Investor Information Document (KIID) gives you all
+                                          of the key facts about a fund.</span>
+                                    <span class="fa fa-info"></span>
+                                    <img src="assets/img/pdficon.png" class="iconPdf" alt="">
+                                    <a class="subrayado" target="_blank"
+                                          href="https://equiniti.webfg.com/kiids/mskiids.php?isin=GB00B2PB2507&amp;key=acd70764cd9535372f8ad74a293e2c70">Key
+                                          investor information document</a>
+
+
+
+                              </div>
+                        </div>
+
+                        <!-- icons info + datos del fondo -->
+                        <div class="dataTables">
+                              <div class="dataTables_table">
+                                    <table>
+                                          <tbody>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Income or accumulation. This refers
+                                                                  to the method in which dividends are managed - either
+                                                                  paid to the investor or invested back into the
+                                                                  fund.</span><span class="fa fa-info"></span></td>
+                                                      <td>Fund type</td>
+                                                      <td>Open Ended Investment Company</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">NAV stands for Net Asset Value. This
+                                                                  is the price per unit/share of a fund.</span><span
+                                                                  class="fa fa-info"></span></td>
+                                                      <td>Last NAV</td>
+                                                      <td>2.02 GBP 31-08-2022</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">The total expense ratio (TER) is a
+                                                                  measure of most of the charges associated with
+                                                                  operating a fund. It is calculated by dividing the
+                                                                  annual cost by the total assets within the fund and is
+                                                                  expressed as a percentage.</span><span
+                                                                  class="fa fa-info"></span></td>
+                                                      <td>OCF</td>
+                                                      <td>1.20 % 08-08-2022</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">The return earned on an investment
+                                                                  taking into account the annual income and its present
+                                                                  capital value.</span><span class="fa fa-info"></span>
+                                                      </td>
+                                                      <td>1 year yield</td>
+                                                      <td>0.00 %</td>
+                                                </tr>
+                                                <tr>
+                                                      <td>&nbsp</td>
+                                                      <td>ShareDealing</td>
+                                                      <td><span class="fa fa-close"></span></td>
+                                                </tr>
+                                                <tr>
+                                                      <td>&nbsp</td>
+                                                      <td>ISA</td>
+                                                      <td><span class="fa fa-check"></span></td>
+                                                </tr>
+                                                <tr>
+                                                      <td>&nbsp</td>
+                                                      <td>SIPP</td>
+                                                      <td><span class="fa fa-check"></span></td>
+                                                </tr>
+                                          </tbody>
+                                    </table>
+                              </div>
+
+                              <div class="dataTables_table">
+                                    <table>
+                                          <tbody>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">An ISIN is a code which uniquely
+                                                                  identifies a security.</span><span
+                                                                  class="fa fa-info"></span></td>
+                                                      <td>ISIN</td>
+                                                      <td>GB00B2PB2507</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">The return earned on an investment
+                                                                  taking into account the annual income and its present
+                                                                  capital value.</span><span class="fa fa-info"></span>
+                                                      </td>
+                                                      <td>Fund manager</td>
+                                                      <td>7IM</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">The Investment Association (IA)
+                                                                  maintains a system FOR fund classification. EACH
+                                                                  sector CONTAINS funds WITH comparable characteristics,
+                                                                  FOR EXAMPLE investing IN similar assets.</span><span
+                                                                  class="fa fa-info"></span></td>
+                                                      <td>IMA Sector</td>
+                                                      <td>Flexible Investment</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">This is assigned by Morningstar
+                                                                  analysts based upon certain criteria. Visit
+                                                                  Morningstar for more information.</span><span
+                                                                  class="fa fa-info"></span></td>
+                                                      <td>Morningstar category™</td>
+                                                      <td>GBP Allocation 80%+ Equity</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">The Morningstar Rating IS a
+                                                                  risk-adjusted, cost-adjusted comparison of fund
+                                                                  performance WITHIN fund categories. Find OUT more
+                                                                  about the Morningstar rating.</span><span
+                                                                  class="fa fa-info"></span></td>
+                                                      <td>Morningstar overall rating</td>
+                                                      <td>
+                                                            <span class="fa fa-star fa-star-selected"></span>
+                                                            <span class="fa fa-star fa-star-selected"></span>
+                                                            <span class="fa fa-star fa-star-selected"></span>
+                                                            <span class="fa fa-star"></span>
+                                                            <span class="fa fa-star"></span>
+                                                      </td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">This looks at the variation in a
+                                                                  fund's month-to-month returns. Find out more about the
+                                                                  Morningstar risk rating (link TBC).</span><span
+                                                                  class="fa fa-info"></span></td>
+                                                      <td>Morningstar overall risk</td>
+                                                      <td>Average</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">The date the fund was first
+                                                                  launched..</span><span class="fa fa-info"></span></td>
+                                                      <td>Launch date</td>
+                                                      <td>27-03-2008</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">The month-end net assets of the
+                                                                  mutual fund, recorder in millions of
+                                                                  dollars.</span><span class="fa fa-info"></span></td>
+                                                      <td>Fund size</td>
+                                                      <td>629,330.67</td>
+                                                </tr>
+                                          </tbody>
+                                    </table>
+                              </div>
+                        </div>
+
+
+                  </section>
+            </header>
+
+            <!-- Info central pag -->
+            <main>
+                  <!-- Sección intro, gráfico + aside con tablas -->
+                  <section class="twoColumnRight">
+                        <article class="descriptSimple">
+                              <section class="objetive">
+                                    <h4>Fund objective</h4>
+                                    <p>7IM AAP (Asset Allocated Passives) Adventurous Fund aims to provide capital
+                                          growth. In relation to AAP (Asset Allocated Passives), see the investment
+                                          strategy section below. The Sub-Fund invests at least 80% of its assets in
+                                          equity and fixed interest instruments that, for the most part, use passive
+                                          strategies (that is, strategies designed to track the performance of
+                                          particular indices, market sectors or asset classes).<br><br> The Sub-Fund
+                                          will also invest in other asset classes such as property, commodities and
+                                          private equity indirectly through holdings in equities including investment
+                                          trusts, exchange traded funds or other funds. The asset allocation for the
+                                          entire portfolio will be actively managed. The other 20% of the Sub-Fund will
+                                          be invested in liquid assets such as cash, deposits, money market funds and
+                                          money market instruments, as well as warrants.</p>
+                              </section>
+
+                              <!-- Tabs Gráfico  -->
+                              <section>
+                                    <h4>Fund performance</h4>
+                                    <div class="Tabslayout">
+                                          <div class="tab">
+                                                <button class="tablinks active" onclick="openCity(event, '1month')">1
+                                                      Month</button>
+                                                <button class="tablinks" onclick="openCity(event, '6month')">6
+                                                      Month</button>
+                                                <button class="tablinks" onclick="openCity(event, '1year')">1
+                                                      Year</button>
+                                                <button class="tablinks" onclick="openCity(event, '3year')">3
+                                                      Year</button>
+                                                <button class="tablinks" onclick="openCity(event, '5year')">5
+                                                      Year</button>
+                                          </div>
+
+                                          <div id="1month" class="tabcontent" style="display: block;">
+                                                <canvas id="myChar1month" width="400" height="400"></canvas>
+                                                <script>
+                                                      var ctx = document.getElementById("myChar1month").getContext('2d');
+                                                      var myChar1month = new Chart(ctx, {
+                                                            type: 'line',
+                                                            data: {
+                                                                  labels: ["aug/22", "aug/22", "aug/22", "aug/22", "aug/22", "aug/22", "aug/22", "aug/22", "aug/22"],
+                                                                  datasets: [{
+                                                                        label: 'GBP Allocation 80%+ Equity',
+                                                                        data: [100, 100.22, 99.93, 101.08, 102.17, 101.75, 102.06, 100.24, 98.20],
+                                                                        fill: false,
+                                                                        borderColor: '#2196f3',
+                                                                        backgroundColor: '#2196f3',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  },
+                                                                  {
+                                                                        label: ' 7IM AAP Adventurous Fund A Acc',
+                                                                        data: [100, 100.02, 100.23, 99.99, 101.26, 102.47, 101.87, 102.34, 99.11],
+                                                                        fill: false,
+                                                                        borderColor: '#489649',
+                                                                        backgroundColor: '#489649',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  }]
+                                                            },
+                                                            options: {
+                                                                  responsive: true,
+                                                                  maintainAspectRatio: false,
+                                                            }
+                                                      });
+                                                </script>
+                                          </div>
+
+                                          <div id="6month" class="tabcontent">
+                                                <canvas id="myChart6month" width="400" height="400"></canvas>
+                                                <script>
+                                                      var ctx = document.getElementById("myChart6month").getContext('2d');
+                                                      var myChart6month = new Chart(ctx, {
+                                                            type: 'line',
+                                                            data: {
+                                                                  labels: ["mar/22", "mar/22", "apr/22", "apr/22", "may/22", "may/22", "jun/22", "jun/22", "jul/22", "jul/22", "aug/22", "aug/22", "sep/22", "sep/22"],
+                                                                  datasets: [{
+                                                                        label: 'GBP Allocation 80%+ Equity',
+                                                                        data: [100, 100.22, 99.93, 101.08, 102.17, 101.75, 102.06, 100.24, 98.20, 99.04, 99.54, 98.20, 98.50, 99.20],
+                                                                        fill: false,
+                                                                        borderColor: '#2196f3',
+                                                                        backgroundColor: '#2196f3',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  },
+                                                                  {
+                                                                        label: ' 7IM AAP Adventurous Fund A Acc',
+                                                                        data: [100, 100.02, 100.23, 99.99, 101.26, 102.47, 101.87, 102.34, 99.11, 100.23, 99.99, 100.02, 100.22, 100.88],
+                                                                        fill: false,
+                                                                        borderColor: '#489649',
+                                                                        backgroundColor: '#489649',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  }]
+                                                            },
+                                                            options: {
+                                                                  responsive: true,
+                                                                  maintainAspectRatio: false,
+                                                            }
+                                                      });
+                                                </script>
+                                          </div>
+
+                                          <div id="1year" class="tabcontent">
+                                                <canvas id="myChart1year" width="400" height="400"></canvas>
+                                                <script>
+                                                      var ctx = document.getElementById("myChart1year").getContext('2d');
+                                                      var myChart1year = new Chart(ctx, {
+                                                            type: 'line',
+                                                            data: {
+                                                                  labels: ["jan/22", "jan/22", "feb/22", "feb/22", "mar/22", "mar/22", "apr/22", "apr/22", "may/22", "may/22", "jun/22", "jun/22", "jul/22", "jul/22", "aug/22", "aug/22", "sep/22", "sep/22"],
+                                                                  datasets: [{
+                                                                        label: 'GBP Allocation 80%+ Equity',
+                                                                        data: [100, 100.22, 99.93, 101.08, 102.17, 101.75, 102.06, 100.24, 98.20, 99.04, 99.54, 98.20, 98.50, 99.20, 99.11, 100.23, 99.99, 100.02],
+                                                                        fill: false,
+                                                                        borderColor: '#2196f3',
+                                                                        backgroundColor: '#2196f3',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  },
+                                                                  {
+                                                                        label: ' 7IM AAP Adventurous Fund A Acc',
+                                                                        data: [100, 100.02, 100.23, 99.99, 101.26, 102.47, 101.87, 102.34, 99.11, 100.23, 99.99, 100.02, 102.17, 101.75, 102.06, 100.24, 100.22, 100.88],
+                                                                        fill: false,
+                                                                        borderColor: '#489649',
+                                                                        backgroundColor: '#489649',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  }]
+                                                            },
+                                                            options: {
+                                                                  responsive: true,
+                                                                  maintainAspectRatio: false,
+                                                            }
+                                                      });
+                                                </script>
+                                          </div>
+
+                                          <div id="3year" class="tabcontent">
+                                                <canvas id="myChart3year" width="400" height="400"></canvas>
+                                                <script>
+                                                      var ctx = document.getElementById("myChart3year").getContext('2d');
+                                                      var myChart3year = new Chart(ctx, {
+                                                            type: 'line',
+                                                            data: {
+                                                                  labels: ["jan/19", "jan/19", "feb/19", "feb/19", "mar/20", "mar/20", "apr/20", "apr/20", "may/21", "may/21", "jun/21", "jun/21", "jul/21", "jul/21", "aug/21", "aug/22", "sep/22", "sep/22", "oct/21", "oct/21", "oct/22", "nov/22", "nov/22"],
+                                                                  datasets: [{
+                                                                        label: 'GBP Allocation 80%+ Equity',
+                                                                        data: [100, 100.22, 99.93, 101.08, 102.17, 101.75, 102.06, 100.24, 98.20, 99.04, 99.54, 98.20, 98.50, 99.20, 99.11, 100.23, 99.99, 100.02, 101, 101.12, 101.39, 101.98, 102],
+                                                                        fill: false,
+                                                                        borderColor: '#2196f3',
+                                                                        backgroundColor: '#2196f3',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  },
+                                                                  {
+                                                                        label: ' 7IM AAP Adventurous Fund A Acc',
+                                                                        data: [100, 100.02, 100.23, 99.99, 101.26, 102.47, 101.87, 102.34, 99.11, 100.23, 99.99, 100.02, 102.17, 101.75, 102.06, 100.24, 100.22, 100.88, 100.21, 100.12, 100.39, 100.98, 101.02],
+                                                                        fill: false,
+                                                                        borderColor: '#489649',
+                                                                        backgroundColor: '#489649',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  }]
+                                                            },
+                                                            options: {
+                                                                  responsive: true,
+                                                                  maintainAspectRatio: false,
+                                                            }
+                                                      });
+                                                </script>
+                                          </div>
+
+                                          <div id="5year" class="tabcontent">
+                                                <canvas id="myChart5year" width="400" height="400"></canvas>
+                                                <script>
+                                                      var ctx = document.getElementById("myChart5year").getContext('2d');
+                                                      var myChart5year = new Chart(ctx, {
+                                                            type: 'line',
+                                                            data: {
+                                                                  labels: ["jan/17", "jan/17", "feb/17", "feb/18", "mar/18", "jan/18", "jan/18", "feb/19", "feb/19", "mar/19", "mar/19", "apr/19", "apr/20", "may/20", "may/20", "jun/20", "jun/21", "jul/21", "jul/21", "aug/21", "aug/22", "sep/22", "sep/22", "oct/21", "oct/21", "oct/22", "nov/22", "nov/22"],
+                                                                  datasets: [{
+                                                                        label: 'GBP Allocation 80%+ Equity',
+                                                                        data: [100, 100.22, 99.93, 101.08, 102.17, 101.75, 102.06, 100.24, 98.20, 99.04, 99.54, 98.20, 98.50, 99.20, 99.11, 100.23, 99.99, 100.02, 101, 101.12, 101.39, 101.98, 102, 102.88, 102.12, 102.39, 101.98, 102],
+                                                                        fill: false,
+                                                                        borderColor: '#2196f3',
+                                                                        backgroundColor: '#2196f3',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  },
+                                                                  {
+                                                                        label: ' 7IM AAP Adventurous Fund A Acc',
+                                                                        data: [100, 100.02, 100.23, 99.99, 101.26, 102.47, 101.87, 102.34, 99.11, 100.23, 99.99, 100.02, 102.17, 101.75, 102.06, 100.24, 100.22, 100.88, 100.21, 100.12, 100.39, 100.98, 101.02, 101.21, 101.12, 101.39, 101.68, 101.02],
+                                                                        fill: false,
+                                                                        borderColor: '#489649',
+                                                                        backgroundColor: '#489649',
+                                                                        borderWidth: 1,
+                                                                        pointRadius: 1.7,
+                                                                        pointHoverRadius: 2.2
+                                                                  }]
+                                                            },
+                                                            options: {
+                                                                  responsive: true,
+                                                                  maintainAspectRatio: false,
+                                                            }
+                                                      });
+                                                </script>
+                                          </div>
+
+
+
+
+                                    </div>
+
+
+                              </section>
+                        </article>
+                        <aside>
+                              <section>
+                                    <h4>Fees</h4>
+                                    <table class="data">
+                                          <tbody>
+                                                <tr>
+                                                      <td>Ongoing charges figure (OCF)</td>
+                                                      <td>1.20 %</td>
+                                                </tr>
+                                                <tr>
+                                                      <td>Annual management charge</td>
+                                                      <td>1.00 %</td>
+                                                </tr>
+                                                <tr>
+                                                      <td>Initial charge</td>
+                                                      <td>4.00 %</td>
+                                                </tr>
+                                                <tr>
+                                                      <td>Exit charge</td>
+                                                      <td>0.00 %</td>
+                                                </tr>
+                                                <tr>
+                                                      <td>Your saving</td>
+                                                      <td>n/a</td>
+                                                </tr>
+                                          </tbody>
+                                    </table>
+                              </section>
+                              <section>
+                                    <h4>Risk & modern portfolio statistics</h4><span class="datesmall">as of 31 August
+                                          2022</span>
+                                    <table class="data">
+                                          <thead>
+                                                <tr>
+                                                      <td>&nbsp;</td>
+                                                      <td>1Y</td>
+                                                      <td>3Y</td>
+                                                </tr>
+
+
+                                          </thead>
+                                          <tbody>
+                                                <tr class="inform">
+                                                      <td>
+                                                            <span class="tooltipInfo">Is the statistical measurement of
+                                                                  dispersion about an average, which depicts how widely
+                                                                  a stock or portfolio’s returns varied over a certain
+                                                                  period of time.</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Volatility
+                                                      </td>
+                                                      <td>10.00 %</td>
+                                                      <td>13.05 %</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo"> The Sharpe Ratio is a risk-adjusted
+                                                                  measure developed by Nobel Laureate William Sharpe. It
+                                                                  is calculated by using excess return and standard
+                                                                  deviation to determine reward per unit of risk.</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Sharpe
+                                                      </td>
+                                                      <td>-0.18</td>
+                                                      <td>0.30</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Alpha measures a fund’s performance
+                                                                  after adjusting for the funds systematic risk as
+                                                                  measured by the fund’s beta with respect to the index.
+                                                                  An investor could have formed a passive portfolio with
+                                                                  the same beta that of the fund by investing in the
+                                                                  index and either borrowing or lending at the risk-free
+                                                                  rate of return. Alpha is the difference between the
+                                                                  average excess return on the fund and the average
+                                                                  excess return on the levered or de-levered index
+                                                                  portfolio.</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Alpha
+                                                      </td>
+                                                      <td>-3.26</td>
+                                                      <td>-2.41</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Information ratio is a risk-adjusted
+                                                                  performance measure. The information ratio is a
+                                                                  special version of the Sharpe Ratio in that the
+                                                                  benchmark doesn't have to be the risk-free rate. The
+                                                                  Israelson method is an adjustment of the Information
+                                                                  Ratio to take into account the inconsistency of the IR
+                                                                  when excess returns are negative.</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Information ratio
+                                                      </td>
+                                                      <td>-0.81</td>
+                                                      <td>-0.82</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">R-squared is another statistic that
+                                                                  is produced by a least-squares regression analysis.
+                                                                  Rsquared is a number between 0 and 100% that measures
+                                                                  the strength of the relationship between the dependent
+                                                                  and independent variables. An R-squared of 0 means
+                                                                  that there is no relationship between the two
+                                                                  variables and an R-squared of 100% means that the
+                                                                  relationship is perfect with every scatter point
+                                                                  falling exactly on the regression line.</span>
+                                                            <span class="fa fa-info"></span>&nbsp;R2
+                                                      </td>
+                                                      <td>84.14</td>
+                                                      <td>93.76</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Beta is a measure of a fund’s
+                                                                  sensitivity to movements in the index.</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Beta
+                                                      </td>
+                                                      <td>0.87</td>
+                                                      <td>0.97</td>
+                                                </tr>
+
+                                          </tbody>
+                                    </table>
+                              </section>
+                        </aside>
+                  </section>
+
+                  <!-- Seccón 2 columnas tablas -->
+                  <section class="thwoColumns">
+                        <article>
+                              <h4>Cumulative performance</h4><span class="datesmall">as of 31 August 2022</span>
+                              <div class="limit">
+                                    <table class="data">
+                                          <thead>
+                                                <tr>
+                                                      <td>&nbsp;</td>
+                                                      <td colspan="4">Cumulative</td>
+                                                      <td colspan="3">Cumulative</td>
+                                                </tr>
+                                                <tr>
+                                                      <td>&nbsp;</td>
+                                                      <td>3m</td>
+                                                      <td>6m</td>
+                                                      <td>YTD</td>
+                                                      <td>1Y</td>
+                                                      <td>3Y</td>
+                                                      <td>5Y</td>
+                                                      <td>10Y</td>
+                                                </tr>
+
+
+                                          </thead>
+                                          <tbody>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Fund past performances of the
+                                                                  fund.</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Fund
+                                                      </td>
+                                                      <td>-0.96</td>
+                                                      <td>-1.45</td>
+                                                      <td>-6.08</td>
+                                                      <td>-1.81</td>
+                                                      <td>3.41</td>
+                                                      <td>3.91</td>
+                                                      <td>7.17</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Morningstar category past
+                                                                  performances.</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Category
+                                                      </td>
+                                                      <td>-1.81</td>
+                                                      <td>-2.72</td>
+                                                      <td>-7.98</td>
+                                                      <td>-3.72</td>
+                                                      <td>4.01</td>
+                                                      <td>n/a</td>
+                                                      <td>7.90</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Fund bechmark past
+                                                                  performances.</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Benchmark
+                                                      </td>
+                                                      <td>0.36</td>
+                                                      <td>-0.96</td>
+                                                      <td>-3.98</td>
+                                                      <td>1.63</td>
+                                                      <td>6.11</td>
+                                                      <td>6.98</td>
+                                                      <td>9.66</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Fund percentile within the
+                                                                  category</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Percentile
+                                                      </td>
+                                                      <td>23</td>
+                                                      <td>31</td>
+                                                      <td>34</td>
+                                                      <td>38</td>
+                                                      <td>62</td>
+                                                      <td>71</td>
+                                                      <td>71</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Fund ranking within the
+                                                                  category</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Ranking
+                                                      </td>
+                                                      <td>146/ 692</td>
+                                                      <td>179/ 676</td>
+                                                      <td>219/ 675</td>
+                                                      <td>241/ 663</td>
+                                                      <td>329/ 559</td>
+                                                      <td>304/ 453</td>
+                                                      <td>179/ 259</td>
+                                                </tr>
+                                          </tbody>
+                                    </table>
+                              </div>
+
+                        </article>
+                        <article>
+                              <h4>Annual performance</h4>
+                              <div class="limit">
+                                    <table class="data">
+                                          <thead>
+                                                <tr>
+                                                      <td>&nbsp;</td>
+                                                      <td>2021</td>
+                                                      <td>2020</td>
+                                                      <td>2019</td>
+                                                      <td>2018</td>
+                                                      <td>2017</td>
+                                                      <td>2016</td>
+                                                      <td>2015</td>
+                                                </tr>
+
+
+                                          </thead>
+                                          <tbody>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Fund ranking within the
+                                                                  category</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Fund
+                                                      </td>
+                                                      <td>-0.96</td>
+                                                      <td>-1.45</td>
+                                                      <td>-6.08</td>
+                                                      <td>-1.81</td>
+                                                      <td>3.41</td>
+                                                      <td>3.91</td>
+                                                      <td>7.17</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Fund ranking within the
+                                                                  category</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Category
+                                                      </td>
+                                                      <td>-1.81</td>
+                                                      <td>-2.72</td>
+                                                      <td>-7.98</td>
+                                                      <td>-3.72</td>
+                                                      <td>4.01</td>
+                                                      <td>n/a</td>
+                                                      <td>7.90</td>
+                                                </tr>
+                                                <tr class="inform">
+                                                      <td><span class="tooltipInfo">Fund ranking within the
+                                                                  category</span>
+                                                            <span class="fa fa-info"></span>&nbsp;Benchmark
+                                                      </td>
+                                                      <td>0.36</td>
+                                                      <td>-0.96</td>
+                                                      <td>-3.98</td>
+                                                      <td>1.63</td>
+                                                      <td>6.11</td>
+                                                      <td>6.98</td>
+                                                      <td>9.66</td>
+                                                </tr>
+
+                                          </tbody>
+                                    </table>
+                              </div>
+
+                        </article>
+                  </section>
+
+                  <!-- Seccón 3 columnas tabla + gráficos -->
+                  <section class="threeColumn">
+                        <article>
+                              <h4>Top 10 holdings</h4>
+                              <table class="data">
+                                    <tbody>
+                                          <tr>
+                                                <td>1</td>
+                                                <td class="text">Ninety One Global Environment K</td>
+                                                <td>5.27 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td>2</td>
+                                                <td class="text">Xtrackers MSCI World Value ETF 1C</td>
+                                                <td>4.90 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td>3</td>
+                                                <td class="text">Baillie Gifford WW Hlth Innovt B GBP Acc</td>
+                                                <td>4.90 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td>4</td>
+                                                <td class="text">iShares Glb Prpty Secs Eq Idx (UK) L Acc</td>
+                                                <td>3.16 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td>5</td>
+                                                <td class="text">BSF Global Event Driven I5 GBP H</td>
+                                                <td>3.05 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td>6</td>
+                                                <td class="text">Berkshire Hathaway Inc Class B</td>
+                                                <td>2.93 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td>7</td>
+                                                <td class="text">Wts. Goldman Sachs 0.0%</td>
+                                                <td>2.40 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td>8</td>
+                                                <td class="text">Lloyds Bank plc 1.65809%</td>
+                                                <td>2.04 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td>9</td>
+                                                <td class="text">National Westminster Bank plc 1.78951%</td>
+                                                <td>2.04 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                          <tr>
+                                                <td>10</td>
+                                                <td class="text">WTS.GOLDMAN SACHS INT</td>
+                                                <td>1.76 %</td>
+                                                <td><span class="percent"></span></td>
+                                          </tr>
+                                    </tbody>
+                              </table>
+                        </article>
+                        <div class="graficos">
+                              <article class="disc">
+                                    <h4>Asset allocation</h4>
+                                    <p>
+                                          <!-- Grafico rueda disco -->
+                                          <canvas id="myChartDisc" max-width="400" max-height="400"></canvas>
+                                          <script>
+                                                const grdisc = document.getElementById('myChartDisc').getContext('2d');
+                                                const myChartDisc = new Chart(grdisc, {
+                                                      type: 'pie',
+                                                      data: {
+                                                            labels: ['Cash', 'Stock', 'Bond', 'Convertible', 'Other', 'Preferred', 'Other positions'],
+                                                            datasets: [{
+                                                                  label: '# of Votes',
+                                                                  data: [52.57, 26.04, 19.79, 1.47, 0.11, 0.03, 0],
+                                                                  backgroundColor: [
+                                                                        'rgba(255, 99, 132, .3)',
+                                                                        'rgba(54, 162, 235, .3)',
+                                                                        'rgba(255, 206, 86, .3)',
+                                                                        'rgba(75, 192, 192, .3)',
+                                                                        'rgba(153, 102, 255, .3)',
+                                                                        'rgba(255, 159, 64, .3)'
+                                                                  ],
+                                                                  borderColor: [
+                                                                        'rgba(255, 99, 132, 1)',
+                                                                        'rgba(54, 162, 235, 1)',
+                                                                        'rgba(255, 206, 86, 1)',
+                                                                        'rgba(75, 192, 192, 1)',
+                                                                        'rgba(153, 102, 255, 1)',
+                                                                        'rgba(255, 159, 64, 1)'
+                                                                  ],
+                                                                  borderWidth: 1
+                                                            }]
+                                                      },
+                                                      options: {
+                                                            scales: {
+                                                                  y: {
+                                                                        beginAtZero: true
+                                                                  }
+                                                            }
+                                                      }
+                                                });
+                                          </script>
+                                    </p>
+                              </article>
+                              <article class="disc">
+                                    <h4>Sector allocation</h4>
+                                    <p>
+                                          <!-- Grafico rueda disco -->
+                                          <canvas id="myChartDisc2" max-width="400" max-height="400"></canvas>
+                                          <script>
+                                                const grdisc2 = document.getElementById('myChartDisc2').getContext('2d');
+                                                const myChartDisc2 = new Chart(grdisc2, {
+                                                      type: 'pie',
+                                                      data: {
+                                                            labels: ['Healthcare', 'Financial Services', 'Real Estate', 'Industrials', 'Technology', 'Utilities'],
+                                                            datasets: [{
+                                                                  label: '# of Votes',
+                                                                  data: [5.78, 3.64, 3.3, 1.47, 3.1, 2.39, 0, 0.9],
+                                                                  backgroundColor: [
+                                                                        'rgba(255, 99, 132, .3)',
+                                                                        'rgba(54, 162, 235, .3)',
+                                                                        'rgba(255, 206, 86, .3)',
+                                                                        'rgba(75, 192, 192, .3)',
+                                                                        'rgba(153, 102, 255, .3)',
+                                                                        'rgba(255, 159, 64, .3)'
+                                                                  ],
+                                                                  borderColor: [
+                                                                        'rgba(255, 99, 132, 1)',
+                                                                        'rgba(54, 162, 235, 1)',
+                                                                        'rgba(255, 206, 86, 1)',
+                                                                        'rgba(75, 192, 192, 1)',
+                                                                        'rgba(153, 102, 255, 1)',
+                                                                        'rgba(255, 159, 64, 1)'
+                                                                  ],
+                                                                  borderWidth: 1
+                                                            }]
+                                                      },
+                                                      options: {
+                                                            scales: {
+                                                                  y: {
+                                                                        beginAtZero: true
+                                                                  }
+                                                            }
+                                                      }
+                                                });
+                                          </script>
+                                    </p>
+                              </article>
+                        </div>
+
+                  </section>
+
+                  <!-- Seccón mapa -->
+                  <section class="map">
+                        <h4>Geographical breakdown</h4>
+                        <div class="map_img">
+                              <div class="city"><span>Canada</span><span>0.00%</span></div>
+                              <div class="city"><span>United States</span><span>13.54 %</span></div>
+                              <div class="city"><span>Latin America</span><span>0.00%</span></div>
+                              <div class="city"><span>United Kingdom</span><span>1.72 %</span></div>
+                              <div class="city"><span>Eurozone</span><span>1.80 %</span></div>
+                              <div class="city"><span>Africa</span><span>0.00%</span></div>
+                              <div class="city"><span>Europe - ex Euro</span><span>1.72 %</span></div>
+                              <div class="city"><span>Middle East</span><span>0.00%</span></div>
+                              <div class="city"><span>Asia - Emerging</span><span>0.00%</span></div>
+                              <div class="city"><span>Japan</span><span>1.67 %</span></div>
+                              <div class="city"><span>Asia - Developed</span><span>1.72 %</span></div>
+                              <div class="city"><span>Australasia</span><span>0.00%</span></div>
+                              <div class="city not"><span>Not Classified</span><span>57.82 %</span></div>
+                        </div>
+
+
+                        <div class="progressBar">
+                              <span>100%</span>
+                              <span>50%</span>
+                              <span>0%</span>
+                        </div>
+                  </section>
+
+            </main>
+      </div>
+      <script src="assets/js/app.js"></script>
+</body>
+
+</html>
