@@ -1,4 +1,4 @@
-# Financial Group Solution
+# Financial Web Solution
 
 Solución web responsive
 
